@@ -55,3 +55,93 @@ Checked directory ownership and permissions to understand security boundaries.
 - Explored system logs in /var/log
 - Reviewed authentication logs for SSH and sudo activity
 - Used journalctl for service-level logs
+
+## Note
+Reviewed /var/log/auth.log to verify successful SSH key authentication and sudo command auditing. Confirmed that the ubuntu user authenticated via public key and executed administrative commands using sudo, ensuring traceability and secure access control.
+
+Perfect question.
+Below is **exactly what to paste** into **`docs/01-ec2-setup.md`** for **Step 5**.
+You can copy it **as-is** (adjust nothing).
+
+---
+
+## **Step 5: SSH Hardening and Secure Access**
+
+### **Objective**
+
+Strengthen server security by restricting SSH access to key-based authentication only and preventing direct root login. This reduces the risk of brute-force attacks and unauthorized access.
+
+---
+
+### **Actions Taken**
+
+#### **1. Disabled Password-Based Authentication**
+
+Password login was disabled to ensure that only users with valid SSH key pairs can access the server.
+
+**Configuration updated in:**
+
+```bash
+/etc/ssh/sshd_config
+```
+
+**Relevant settings:**
+
+```text
+PasswordAuthentication no
+PubkeyAuthentication yes
+```
+
+---
+
+#### **2. Disabled Root Login over SSH**
+
+Direct root login via SSH was disabled to enforce the principle of least privilege. Administrative tasks are performed using `sudo` instead.
+
+**Relevant setting:**
+
+```text
+PermitRootLogin no
+```
+
+---
+
+#### **3. Restarted SSH Service**
+
+To apply the changes, the SSH service was restarted.
+
+```bash
+sudo systemctl restart ssh
+```
+
+---
+
+### **Verification**
+
+The SSH configuration was verified to confirm that password authentication and root login are disabled.
+
+```bash
+sudo sshd -T | grep -E 'passwordauthentication|permitrootlogin'
+```
+
+**Expected Output:**
+
+```text
+passwordauthentication no
+permitrootlogin no
+```
+
+---
+
+### **Security Impact**
+
+* Prevents brute-force password attacks
+* Ensures only authorized users with SSH keys can access the server
+* Reduces the attack surface by eliminating direct root access
+* Aligns with industry best practices for Linux and cloud server security
+
+---
+
+### **Status**
+
+✅ SSH access successfully hardened and secured
