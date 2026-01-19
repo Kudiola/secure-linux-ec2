@@ -46,3 +46,12 @@ Explored core Linux directories to understand system structure:
 - /opt – optional software
 
 Checked directory ownership and permissions to understand security boundaries.
+
+## Step 4b: Service Management & Logs
+
+- Listed active services using systemctl
+- Verified SSH and UFW services are running
+- Learned service lifecycle commands
+- Explored system logs in /var/log
+- Reviewed authentication logs for SSH and sudo activity
+- Used journalctl for service-level logs

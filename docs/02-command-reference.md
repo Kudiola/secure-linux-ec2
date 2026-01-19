@@ -36,3 +36,21 @@ ls /sbin
 ls /tmp
 ls /opt
 ls -ld /home /root /etc /var /usr /tmp
+
+## Service Management
+```bash
+sudo systemctl list-units --type=service --state=running
+sudo systemctl status ssh
+sudo systemctl status ufw
+sudo systemctl restart ufw
+sudo systemctl start <service>
+sudo systemctl stop <service>
+sudo systemctl enable <service>
+sudo systemctl disable <service>
+
+## Logs
+ls /var/log
+sudo tail -n 20 /var/log/auth.log
+sudo tail -f /var/log/auth.log
+sudo journalctl -xe
+sudo journalctl -u ssh
