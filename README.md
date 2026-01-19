@@ -27,3 +27,13 @@ See the `docs/` directory for step-by-step documentation.
 
 ## Status
 🚧 In progress
+
+## Project Phases
+
+### Phase 1: Secure Linux EC2 Foundation
+- Provisioned Ubuntu EC2 instance on AWS
+- Configured SSH key-based access
+- Implemented UFW firewall rules
+- Enabled system and authentication logging
+- Hardened SSH (disabled password and root login)
+
