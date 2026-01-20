@@ -54,3 +54,35 @@ sudo tail -n 20 /var/log/auth.log
 sudo tail -f /var/log/auth.log
 sudo journalctl -xe
 sudo journalctl -u ssh
+
+## Package Management
+```bash
+sudo apt update
+sudo apt upgrade -y
+sudo apt list --upgradable
+uptime
+
+## Nginx Service Management
+```bash
+sudo apt install nginx -y
+sudo systemctl status nginx
+sudo systemctl stop nginx
+sudo systemctl start nginx
+sudo systemctl restart nginx
+sudo systemctl enable nginx
+curl http://localhost
+
+## Nginx Logs & Troubleshooting
+```bash
+sudo tail -n 20 /var/log/nginx/access.log
+sudo tail -n 20 /var/log/nginx/error.log
+sudo tail -f /var/log/nginx/error.log
+sudo systemctl status nginx
+sudo systemctl restart nginx
+
+## Nginx Firewall & External Access
+```bash
+sudo ufw status
+sudo ufw allow 'Nginx HTTP'
+sudo ufw allow 'Nginx HTTPS'
+sudo ufw reload
