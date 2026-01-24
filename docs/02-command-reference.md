@@ -86,3 +86,18 @@ sudo ufw status
 sudo ufw allow 'Nginx HTTP'
 sudo ufw allow 'Nginx HTTPS'
 sudo ufw reload
+
+
+---
+
+##  Command Reference**
+
+```bash
+# Check Nginx locally
+curl http://localhost
+
+# Check Nginx via Elastic IP
+curl http://34.226.79.215
+
+# SSH into EC2 via Elastic IP
+ssh -i ~/.ssh/mykeypair.pem ubuntu@34.226.79.215
