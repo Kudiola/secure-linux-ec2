@@ -124,3 +124,14 @@ Nginx and system logs can now be monitored actively
 Alerts are triggered if Nginx stops (tested)
 
 Lays the foundation for automated server monitoring and proactive maintenance
+
+## Phase 4 Summary
+
+In Phase 4, we focused on **automation and monitoring** to ensure our EC2 server runs reliably with minimal manual intervention. Key achievements include:
+
+- **Automated Nginx startup**: Nginx now starts automatically on server reboot
+- **Server monitoring**: CPU, memory, disk usage, and service status can be tracked in real-time
+- **Proactive alerts**: Bash script alerts us if Nginx stops (tested)
+
+**Outcome:**  
+The EC2 instance is now a self-managing system with monitoring and alerting, laying the foundation for future automation and production-ready practices.
