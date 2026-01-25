@@ -101,3 +101,40 @@ curl http://34.226.79.215
 
 # SSH into EC2 via Elastic IP
 ssh -i ~/.ssh/mykeypair.pem ubuntu@34.226.79.215
+
+## Automate NGINX Restart
+sudo systemctl status nginx
+sudo systemctl start nginx
+sudo systemctl enable nginx
+systemctl is-enabled nginx
+
+# Check CPU & memory usage
+top
+free -h
+
+# Check disk usage
+df -h
+
+# List all active services
+systemctl list-units --type=service --state=running
+
+# Check Nginx service specifically
+sudo systemctl status nginx
+
+# Optional: Interactive real-time monitoring with htop
+sudo apt update
+sudo apt install htop -y
+htop
+
+# Step 3: Proactive Alerts & Logging
+
+# Real-time Nginx logs
+sudo tail -f /var/log/nginx/access.log
+sudo tail -f /var/log/nginx/error.log
+
+# System logs
+sudo journalctl -xe
+sudo journalctl -f
+
+# Check if Nginx is active
+sudo systemctl is-active nginx

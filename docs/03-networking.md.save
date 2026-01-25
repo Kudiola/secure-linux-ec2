@@ -1,0 +1,42 @@
+# Phase 3: Networking & DNS / External Access
+
+## Objective
+Make the EC2 server externally accessible securely using an Elastic IP, while controlling network access.
+
+## Step 1: Review Security Groups
+- Checked inbound rules to allow only essential ports:
+  - SSH (22) → admin access
+  - HTTP (80) → web access
+  - HTTPS (443) → optional for SSL later
+- Ensured no unnecessary ports were open.
+
+## Step 2: Allocate Elastic IP
+- Allocated an Elastic IP via AWS console:
+  - Example: 34.226.79.215
+- **Purpose:** Prevent IP changes after EC2 restart and simplify external access.
+
+## Step 3: Associate Elastic IP to EC2
+- Associated Elastic IP to the EC2 instance to make it reachable.
+- Verified Elastic IP attachment via EC2 console.
+- Note: DNS mapping using temporary services (nip.io) was considered but skipped due to network limitations.
+
+## Step 4a: Verify External Access
+- Tested Nginx locally on EC2:
+ 
+  curl http://localhost
+
+- Expected output: Nginx default welcome page.
+## Step 4b: Tested Nginx externally using Elastic IP:
+curl http://34.226.79.215
+## Step 4c: Test Nginx via browser (external access)
+
+4d. Security Group Verification
+
+Ensure only necessary ports are open for access:
+
+Type	Port	Source
+SSH	22	Your IP / 0.0.0.0/0
+HTTP	80	0.0.0.0/0
+HTTPS	443	0.0.0.0/0 (optional)
+
+Purpose: Restricts access to only essential services, following security best practices.
